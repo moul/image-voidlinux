@@ -1,0 +1,22 @@
+# /etc/profile
+
+# System wide environment and startup programs.
+
+# Set our default path
+PATH="/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:/bin:/sbin"
+export PATH
+
+# Set default umask
+umask 022
+
+# Set default PAGER and prompt
+export PAGER=less
+export PS1='\h:\w\$ '
+
+# Load profiles from /etc/profile.d
+if [ -d /etc/profile.d/ ]; then
+    for f in /etc/profile.d/*.sh; do
+	[ -r "$f" ] && . "$f"
+	done
+    unset f
+fi
